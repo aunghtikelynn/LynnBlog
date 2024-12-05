@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\Category;
 
 class FrontController extends Controller
 {
     public function blog()
     {
-        return view('front.blog');
+        $posts = Post::all();
+        return view('front.blog',compact('posts'));
     }
 
     public function blogPost($id)
     {
-        return view('front.blog-post');
+        $post = Post::find($id);
+        return view('front.blog-post',compact('post'));
     }
 }
