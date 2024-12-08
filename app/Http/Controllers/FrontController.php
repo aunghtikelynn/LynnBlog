@@ -10,7 +10,7 @@ class FrontController extends Controller
 {
     public function blog()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('id','DESC')->paginate(6);
         return view('front.blog',compact('posts'));
     }
 
