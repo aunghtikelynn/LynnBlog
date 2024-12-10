@@ -17,28 +17,37 @@
                 Posts List
             </div>
             <div class="card-body">
-            <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" name="title">
-                </div>
-                <div class="mb-3">
-                    <label for="category_id" class="form-label">Categories</label>
-                    <select class="form-select" id="category_id" name="category_id">
-                        <option selected>Choose ...</option>
-                            <option value="">...</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="image" class="form-label">Image</label>
-                    <input class="form-control" type="file" id="image" name="image">
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="form-label">Description</label>
-                    <textarea class="form-control" id="description" name="description" rows="2"></textarea>
-                </div>
-                <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="submit">Create</button>
-                </div>
+                <form action="{{route('backendposts.store')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="category_id" class="form-label">Categories</label>
+                        <select class="form-select" id="category_id" name="category_id">
+                            <option selected>Choose ...</option>
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="user_id" class="form-label">User</label>
+                        <input class="form-control" type="text" id="user_id" name="user_id">
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image</label>
+                        <input class="form-control" type="file" id="image" name="image">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="2"></textarea>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="submit">Create</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
