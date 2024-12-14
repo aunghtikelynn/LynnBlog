@@ -41,7 +41,7 @@
                                 <td>{{$category->name}}</td>
                                 <td>
                                     <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                    <button class="btn btn-sm btn-danger delete" data-id="{{$category->id}}">Delete</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -51,4 +51,15 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $('tbody').on('click','.delete',function(){
+                alert('hello');
+                let id = $(this).data('id');
+                console.log(id);
+            })
+        })
+    </script>
 @endsection

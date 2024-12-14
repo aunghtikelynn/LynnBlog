@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -30,10 +31,16 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         // dd($request);
         $posts = Post::create($request->all());
+
+        $file_name = time().'.'.$request->image->extension();
+        $upload = $request->image->move(public_path('images/posts/'),$file_name);
+        if($upload){
+            $posts->image = "/images/posts/".$file_name;
+        }
         $posts->save();
 
         return redirect()->route('backendposts.index');
