@@ -50,7 +50,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Category::Find($id);
+        return view('admin.categories.edit',compact('category'));
     }
 
     /**
@@ -66,6 +67,8 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::Find($id);
+        $category->delete();
+        return redirect()->route('backendcategories.index');
     }
 }
