@@ -6,7 +6,7 @@ Route::get('/',[App\Http\Controllers\FrontController::class, 'blog'])->name('blo
 
 Route::get('/blog-post/{id}',[App\Http\Controllers\FrontController::class, 'blogPost'])->name('blog-post');
 
-Route::group(['prefix'=>'backend','as'=>'backend'],function(){
+Route::group(['prefix'=>'backend','as'=>'backend.'],function(){
     Route::get('/',[App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('posts', App\Http\Controllers\Admin\PostController::class);
     Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class);

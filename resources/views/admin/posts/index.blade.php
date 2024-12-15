@@ -3,9 +3,9 @@
     <!-- Page content-->
     <div class="container-fluid px-4">
         <h1 class="mt-4">Dashboard</h1>
-        <a href="{{route('backendposts.create')}}" class="btn btn-primary float-end">Create Post</a>
+        <a href="{{route('backend.posts.create')}}" class="btn btn-primary float-end">Create Post</a>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active"><a href="{{route('backenddashboard')}}">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
             <li class="breadcrumb-item active">Posts</li>
         </ol>
         
@@ -49,7 +49,7 @@
                                 <td>{{$post->category_id}}</td>
                                 <td>{{$post->user_id}}</td>
                                 <td>
-                                    <a href="{{route('backendposts.edit',$post->id)}}" class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="{{route('backend.posts.edit',$post->id)}}" class="btn btn-sm btn-warning">Edit</a>
                                     <button class="btn btn-sm btn-danger delete" data-id="{{$post->id}}">Delete</button>
                                 </td>
                             </tr>

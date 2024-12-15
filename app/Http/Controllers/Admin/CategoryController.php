@@ -50,6 +50,7 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
+        // echo"<h1>$id</h1>";
         $category = Category::Find($id);
         return view('admin.categories.edit',compact('category'));
     }

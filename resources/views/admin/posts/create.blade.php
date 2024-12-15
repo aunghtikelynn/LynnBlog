@@ -5,8 +5,8 @@
         <h1 class="mt-4">Dashboard</h1>
         <a href="" class="btn btn-primary float-end">Create Post</a>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active"><a href="{{route('backenddashboard')}}">Dashboard</a></li>
-            <li class="breadcrumb-item active"><a href="{{route('backendposts.index')}}">Posts</a></li>
+            <li class="breadcrumb-item active"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="{{route('backend.posts.index')}}">Posts</a></li>
             <li class="breadcrumb-item active">Create Post</li>
         </ol>
         
@@ -17,7 +17,7 @@
                 Posts List
             </div>
             <div class="card-body">
-                <form action="{{route('backendposts.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('backend.posts.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
