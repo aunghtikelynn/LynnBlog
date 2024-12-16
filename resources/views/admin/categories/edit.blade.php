@@ -16,8 +16,9 @@
             Edit Categories
         </div>
         <div class="card-body">
-            <form action="{{route('backend.categories.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('backend.categories.update',$category->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('put')
                 <div class="mb-3">
                     <label for="name" class="form-label fw-bold">Name</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" value="{{$category->name}}" id="name" name="name">

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use App\Http\Requests\PostRequest;
+use App\Http\Requests\PostUpdateRequest;
 
 class PostController extends Controller
 {
@@ -43,7 +44,7 @@ class PostController extends Controller
         }
         $posts->save();
 
-        return redirect()->route('backendposts.index');
+        return redirect()->route('backend.posts.index');
     }
 
     /**
@@ -69,7 +70,21 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $post = Post::find($id);
+        $post->update($request->all());
+
+        if($request->hasFile('image')){
+            $file_name = time().'.'.$request->image->extension();
+            $upload = $request->image->move(public_path('images/posts/'),$file_name);
+            if($upload){
+                $post->image = "/images/posts/".$file_name;
+            }
+        }else{
+            $post->image = $request->old_image;
+        }
+
+        $post->save();
+        return redirect()->route('backend.posts.index');
     }
 
     /**
@@ -79,6 +94,6 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect()->route('backendposts.index');
+        return redirect()->route('backend.posts.index');
     }
 }

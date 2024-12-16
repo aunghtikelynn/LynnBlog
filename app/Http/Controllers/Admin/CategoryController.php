@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 
 class CategoryController extends Controller
 {
@@ -34,7 +35,7 @@ class CategoryController extends Controller
         $categories = Category::create($request->all());
         $categories->save();
 
-        return redirect()->route('backendcategories.index');
+        return redirect()->route('backend.categories.index');
     }
 
     /**
@@ -60,7 +61,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::find($id);
+        $category->update($request->all());
+
+        $category->save();
+        return redirect()->route('backend.categories.index');   
     }
 
     /**
@@ -70,6 +75,6 @@ class CategoryController extends Controller
     {
         $category = Category::Find($id);
         $category->delete();
-        return redirect()->route('backendcategories.index');
+        return redirect()->route('backend.categories.index');
     }
 }
