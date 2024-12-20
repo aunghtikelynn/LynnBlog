@@ -16,7 +16,7 @@ class CheckUserRole
      */
     public function handle(Request $request, Closure $next,$role): Response
     {
-        $role = explode('|',$role);
+        $roles = explode('|',$role);
         if(Auth::check() && in_array(Auth::user()->role, $roles)){
             return $next($request);
         }

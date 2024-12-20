@@ -10,6 +10,7 @@ Route::group(['middleware'=>['auth','role:Super Admin|Admin'],'prefix'=>'backend
     Route::get('/',[App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('posts', App\Http\Controllers\Admin\PostController::class);
     Route::resource('categories', App\Http\Controllers\Admin\CategoryController::class);
+    Route::resource('users', App\Http\Controllers\Admin\UserController::class);
 });
 
 Auth::routes();
