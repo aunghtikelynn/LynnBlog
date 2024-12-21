@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\UserRequest;
-use App\Models\UserUpdateRequest;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserUpdateRequest;
+
 
 class UserController extends Controller
 {
@@ -31,7 +31,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $users = User::create($request->all());
         $file_name = time().'.'.$request->profile->extension();
@@ -63,7 +63,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserUpdateRequest $request, string $id)
     {
         $user = User::find($id);
         $user->update($request->all());

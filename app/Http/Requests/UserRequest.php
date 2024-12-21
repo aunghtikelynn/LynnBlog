@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
             'phone' => 'required',
             'profile' => 'required', File::image(),
             'email' => 'required',
-            'password' => 'required', Hash::make(),
+            'password' => 'required',
             'role' => 'required',
         ];
     }
