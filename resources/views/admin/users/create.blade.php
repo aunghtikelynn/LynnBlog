@@ -17,7 +17,7 @@
                 Create User
             </div>
             <div class="card-body">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="{{route('backend.users.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
@@ -52,6 +52,17 @@
                         <label for="password" class="form-label">Password</label>
                         <input class="form-control @error('password') is-invalid @enderror" value="{{old('password')}}" type="text" id="password" name="password">
                         @error('password')
+                            <div class="invalid-feedback">{{ $message}} </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="role" class="form-label fw-bold">Role</label>
+                        <select name="role" id="role" class="form-select @error('role') is-invalid @enderror">
+                            <option value="User">User</option>
+                            <option value="Admin">Admin</option>
+                            <option value="SuperAdmin">Super Admin</option>
+                        </select>
+                        @error('role')
                             <div class="invalid-feedback">{{ $message}} </div>
                         @enderror
                     </div>

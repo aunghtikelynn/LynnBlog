@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserRequest;
+use App\Models\UserUpdateRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -30,7 +33,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $users = User::create($request->all());
+        $file_name = time().'.'.$request->profile->extension();
+        $upload = $request->profile->move(public_path('images/users/'),$file_name);
+        if($upload){
+            $users->profile = "/images/users/".$file_name;
+        }
+        $users->save();
+        return redirect()->route('backend.users.index');
     }
 
     /**
@@ -46,7 +56,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -54,7 +65,20 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::find($id);
+        $user->update($request->all());
+
+        if($request->hasFile('profile')){
+            $file_name = time().'.'.$request->profile->extension();
+            $upload = $request->profile->move(public_path('images/users/'),$file_name);
+            if($upload){
+                $user->profile = "/images/users/".$file_name;
+            }
+        }else{
+            $user->profile = $request->old_profile;
+        }
+        $user->save();
+        return redirect()->route('backend.users.index');
     }
 
     /**
@@ -62,6 +86,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('backend.users.index');
     }
 }
