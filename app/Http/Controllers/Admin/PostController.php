@@ -43,7 +43,6 @@ class PostController extends Controller
         if($upload){
             $posts->image = "/images/posts/".$file_name;
         }
-        $posts->user_id = Auth::id();
         $posts->save();
 
         return redirect()->route('backend.posts.index');

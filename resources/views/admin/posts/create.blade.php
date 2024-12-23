@@ -52,6 +52,7 @@
                             <div class="invalid-feedback">{{ $message}} </div>
                         @enderror
                     </div>
+                    <input type="hidden" name="user_id" value="{{Auth::id()}}">
                     <div class="d-grid gap-2">
                         <button class="btn btn-primary" type="submit">Create</button>
                     </div>

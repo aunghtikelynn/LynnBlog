@@ -25,7 +25,6 @@ class PostUpdateRequest extends FormRequest
         return [
             'title' => 'required',
             'category_id' => 'required',
-            'user_id' => 'required',
             'description' => 'required',
         ];
     }

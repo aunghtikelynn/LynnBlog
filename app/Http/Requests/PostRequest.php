@@ -27,7 +27,6 @@ class PostRequest extends FormRequest
             'title' => 'required',
             'image' => 'required',File::image(),
             'category_id' => 'required',
-            'user_id' => 'required',
             'description' => 'required',
         ];
     }
