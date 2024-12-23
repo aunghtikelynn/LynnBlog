@@ -39,13 +39,6 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="user_id" class="form-label">User</label>
-                        <input class="form-control @error('user_id') is-invalid @enderror" value="{{old('user_id')}}" type="text" id="user_id" name="user_id">
-                        @error('user_id')
-                            <div class="invalid-feedback">{{ $message}} </div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
                         <label for="image" class="form-label">Image</label>
                         <input class="form-control @error('image') is-invalid @enderror" accept="image/*" type="file" id="image" name="image">
                         @error('image')

@@ -38,13 +38,6 @@
                             @enderror
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="user_id" class="form-label">User</label>
-                        <input class="form-control @error('user_id') is-invalid @enderror" value="{{$post->user_id}}" type="text" id="user_id" name="user_id">
-                        @error('user_id')
-                            <div class="invalid-feedback">{{ $message}} </div>
-                        @enderror
-                    </div>
                     <!-- <input type="text" class="hidden" value=""> -->
                     <div class="mb-3">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">

@@ -9,6 +9,7 @@ use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateRequest;
 
 
+
 class UserController extends Controller
 {
     /**
@@ -25,7 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $users = User::all();
+        return view('admin.users.create',compact('users'));
     }
 
     /**

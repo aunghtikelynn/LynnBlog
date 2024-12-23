@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\PostUpdateRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -42,6 +43,7 @@ class PostController extends Controller
         if($upload){
             $posts->image = "/images/posts/".$file_name;
         }
+        $posts->user_id = Auth::id();
         $posts->save();
 
         return redirect()->route('backend.posts.index');
