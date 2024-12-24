@@ -46,8 +46,8 @@
                                 <td>{{$i++}}</td>
                                 <td>{{$post->title}}</td>
                                 <td><img src="{{$post->image}}" alt="" width="100"></td>
-                                <td>{{$post->category_id}}</td>
-                                <td>{{$post->user_id}}</td>
+                                <td>{{$post->category->name}}</td>
+                                <td>{{$post->user->name}}</td>
                                 <td>
                                     <a href="{{route('backend.posts.edit',$post->id)}}" class="btn btn-sm btn-warning">Edit</a>
                                     <button class="btn btn-sm btn-danger delete" data-id="{{$post->id}}">Delete</button>
