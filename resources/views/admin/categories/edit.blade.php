@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Items</h1>
+        <h1 class="mt-4">Edit Category</h1>
         <a href="{{route('backend.categories.index')}}" class="btn btn-danger float-end">Cancel</a>
     </div>
     <ol class="breadcrumb mb-4 ps-4">

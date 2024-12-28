@@ -2,7 +2,7 @@
 @section('content')
     <!-- Page content-->
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Dashboard</h1>
+        <h1 class="mt-4">Users</h1>
         <a href="{{route('backend.users.create')}}" class="btn btn-primary float-end">Create User</a>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
