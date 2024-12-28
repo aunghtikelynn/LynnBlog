@@ -67,7 +67,7 @@
                     <select name="role" id="role" class="form-select @error('role') is-invalid @enderror">
                         <option value="User" {{$user->role == "User" ? 'selected':''}}>User</option>
                         <option value="Admin" {{$user->role == "Admin" ? 'selected':''}}>Admin</option>
-                        <option value="SuperAdmin" {{$user->role == "SuperAdmin" ? 'selected':''}}>Super Admin</option>
+                        <option value="Super Admin" {{$user->role == "SuperAdmin" ? 'selected':''}}>Super Admin</option>
                     </select>
                     @error('role')
                         <div class="invalid-feedback">{{ $message}} </div>

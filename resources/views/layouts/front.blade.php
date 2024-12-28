@@ -19,44 +19,12 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('blog')}}">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
                     </ul>
-                    @guest
-                    <a href="/login" class="btn mx-3">Login</a>
-                    <a href="/register" class="btn btn-dark">Register</a>
-                    @else
-                        <div class="dropdown mx-3">
-                            <a href="#" class="text-decoration-none text-light dropdown-toggle" data-bs-toggle="dropdown">
-                                {{Auth::user()->name}}
-                            </a>
-                            <ul class="dropdown-menu">
-                                @if(Auth::user()->role == 'User')
-                                    <li>
-                                        <a href="" class="dropdown-item">Profile</a>
-                                    </li>
-                                @else
-                                    <li>
-                                        <a href="/backend" class="dropdown-item">Admin panel</a>
-                                    </li>
-                                @endif
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                    
-                                </li>
-                            </ul>
-                        </div>
-                    @endif
+                    
                 </div>
             </div>
         </nav>

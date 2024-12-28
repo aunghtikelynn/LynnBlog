@@ -20,7 +20,9 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route('backend.dashboard')}}">Dashboard</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route('backend.posts.index')}}">Posts</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route('backend.categories.index')}}">Categories</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route('backend.users.index')}}">Users</a>
+                    @if(Auth::check() && Auth::user()->role == 'Super Admin')
+                        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{route('backend.users.index')}}">Users</a>
+                    @endif
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -35,12 +37,17 @@
                                 <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
                                 <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#!">Action</a>
-                                        <a class="dropdown-item" href="#!">Another action</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#!">Something else here</a>
+                                        <a href="{{route('blog')}}" class="dropdown-item">Home Page</a>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
                                     </div>
                                 </li>
                             </ul>

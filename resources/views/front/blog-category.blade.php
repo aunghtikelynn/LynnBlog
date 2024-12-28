@@ -16,15 +16,7 @@
             <!-- Blog entries-->
             <div class="col-lg-8">
                 <!-- Featured blog post-->
-                <div class="card mb-4">
-                    <a href="#!"><img class="card-img-top" src="{{$feature_post->image}}" alt="..." /></a>
-                    <div class="card-body">
-                        <div class="small text-muted">January 1, 2023</div>
-                        <h2 class="card-title h4">{{$feature_post->title}}</h2>
-                        <p class="card-text">{{$feature_post->description}}</p>
-                        <a class="btn btn-primary" href="{{route('blog-post',$feature_post->id)}}">Read more →</a>
-                    </div>
-                </div>
+                
                 <!-- Nested row for non-featured blog posts-->
                 <div class="row">
                 @foreach($posts as $post)
